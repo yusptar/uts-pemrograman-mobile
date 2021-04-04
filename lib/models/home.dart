@@ -31,19 +31,19 @@ class HomeState extends State<Home> {
           alignment: Alignment.bottomCenter,
           child: SizedBox(
             width: double.infinity,
-            child: RaisedButton(
-              child: Text("Tambah Data"),
-              onPressed: () async {
-                var rawatjalan = await navigateToEntryForm(context, null);
-                if (rawatjalan != null) {
-                  // Fungsi untuk Insert ke DB
-                  int result = await dbHelper.insert(rawatjalan);
-                  if (result > 0) {
-                    updateListView();
+            child: FloatingActionButton(
+                onPressed: () async {
+                  var rawatjalan = await navigateToEntryForm(context, null);
+                  if (rawatjalan != null) {
+                    // Fungsi untuk Insert ke DB
+                    int result = await dbHelper.insert(rawatjalan);
+                    if (result > 0) {
+                      updateListView();
+                    }
                   }
-                }
-              },
-            ),
+                },
+                child: const Icon(Icons.add),
+                backgroundColor: Colors.lightGreen),
           ),
         ),
       ]),
@@ -54,7 +54,7 @@ class HomeState extends State<Home> {
       BuildContext context, RawatJalan rawatjalan) async {
     var result = await Navigator.push(context,
         MaterialPageRoute(builder: (BuildContext context) {
-      //return EntryForm(rawatjalan);
+      return EntryForm(rawatjalan);
     }));
     return result;
   }

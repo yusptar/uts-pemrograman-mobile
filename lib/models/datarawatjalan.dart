@@ -9,8 +9,8 @@ class RawatJalan {
   // Setters dan Getters variabel diatas
   int get id => _id;
 
-  get price => this._nosurat;
-  set price(value) => this._nosurat = value;
+  get nosurat => this._nosurat;
+  set nosurat(value) => this._nosurat = value;
 
   String get nama => this._nama;
   set nama(String value) => this._nama = value;
