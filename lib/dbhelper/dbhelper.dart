@@ -119,7 +119,7 @@ class DbHelper {
     int count = LoginMapList.length;
     List<Login> LoginList = List<Login>();
     for (int i = 0; i < count; i++) {
-      LoginList.add(Login.fromMap(LoginMapList[i]));
+      LoginList.add(Login.fromMapLogin(LoginMapList[i]));
     }
     return LoginList;
   }
@@ -129,7 +129,7 @@ class DbHelper {
     var res = await dbClient.query("login");
 
     List<Login> list =
-        res.isNotEmpty ? res.map((c) => Login.fromMap(c)).toList() : null;
+        res.isNotEmpty ? res.map((c) => Login.fromMapLogin(c)).toList() : null;
 
     return list;
   }
@@ -140,7 +140,7 @@ class DbHelper {
         "SELECT * FROM login WHERE username = '$username' and password = '$password'");
 
     if (res.length > 0) {
-      return new Login.fromMap(res.first);
+      return new Login.fromMapLogin(res.first);
     }
 
     return null;

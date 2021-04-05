@@ -4,6 +4,7 @@ import 'package:uts/models/home.dart';
 import 'package:uts/models/login.dart';
 import 'package:uts/models/loginResp.dart';
 import 'package:uts/main.dart';
+import 'package:uts/models/register.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -98,16 +99,40 @@ class _LoginPageState extends State<LoginPage> implements LoginCallBack {
               padding: EdgeInsets.all(4),
               child: Material(
                 shadowColor: Colors.lightBlueAccent.shade100,
-                child: ElevatedButton(
+                child: RaisedButton(
                   onPressed: _submit,
-                  child: Text('Log In', style: TextStyle(color: Colors.white)),
+                  child: Text(
+                    'Log In',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
+            ),
+            FlatButton(
+              child: Text(
+                'Create an Account',
+                style: TextStyle(color: Colors.black54),
+              ),
+              onPressed: () async {
+                var login = await navigateToRegisterPage(context, null);
+                if (login != null) {
+                  int result = await dbHelper.insertLogin(login);
+                }
+              },
             ),
           ],
         ),
       ),
     );
+  }
+
+  Future<Login> navigateToRegisterPage(
+      BuildContext context, Login login) async {
+    var result = await Navigator.push(context,
+        MaterialPageRoute(builder: (BuildContext context) {
+      return RegisterPage(login);
+    }));
+    return result;
   }
 
   @override

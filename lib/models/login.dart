@@ -13,7 +13,7 @@ class Login {
 
   Login(this._username, this._password);
 
-  Login.fromMap(Map<String, dynamic> map) {
+  Login.fromMapLogin(Map<String, dynamic> map) {
     this._id = map['id'];
     this._username = map['username'];
     this._password = map['password'];
