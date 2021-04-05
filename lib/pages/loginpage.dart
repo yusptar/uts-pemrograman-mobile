@@ -14,7 +14,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> implements LoginCallBack {
   DbHelper dbHelper = DbHelper();
   bool _isLoading = false;
-  BuildContext _ctx;
   final formKey = new GlobalKey<FormState>();
   final scaffoldKey = new GlobalKey<ScaffoldState>();
   TextEditingController usernameController = TextEditingController();

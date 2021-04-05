@@ -77,7 +77,7 @@ class HomeState extends State<Home> {
           child: ListTile(
             leading: CircleAvatar(
               backgroundColor: Colors.white,
-              child: Icon(Icons.data_usage),
+              child: Text(this.dataList[index].id.toString()),
             ),
             title: Text(
               this.dataList[index].nama,
