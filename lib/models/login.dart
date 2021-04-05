@@ -19,7 +19,7 @@ class Login {
     this._password = map['password'];
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMapLogin() {
     Map<String, dynamic> map = Map<String, dynamic>();
     map['id'] = this._id;
     map['username'] = username;

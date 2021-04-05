@@ -3,6 +3,7 @@ import 'package:uts/dbhelper/dbhelper.dart';
 import 'package:uts/models/home.dart';
 import 'package:uts/models/login.dart';
 import 'package:uts/models/loginResp.dart';
+import 'package:uts/main.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -10,8 +11,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> implements LoginCallBack {
-  DbHelper dbh = DbHelper();
+  DbHelper dbHelper = DbHelper();
   bool _isLoading = false;
+  BuildContext _ctx;
   final formKey = new GlobalKey<FormState>();
   final scaffoldKey = new GlobalKey<ScaffoldState>();
   TextEditingController usernameController = TextEditingController();
@@ -43,7 +45,70 @@ class _LoginPageState extends State<LoginPage> implements LoginCallBack {
   }
 
   @override
-  Widget build(BuildContext context) {}
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "RS POLINEMA",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.black,
+        key: scaffoldKey,
+      ),
+      body: Form(
+        key: formKey,
+        child: ListView(
+          shrinkWrap: true,
+          padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 150),
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              child: Text("RS POLINEMA",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50)),
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              child: TextFormField(
+                keyboardType: TextInputType.text,
+                controller: usernameController,
+                autofocus: false,
+                decoration: InputDecoration(
+                  hintText: 'Username',
+                  contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(32.0)),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              child: TextFormField(
+                controller: passwordController,
+                autofocus: false,
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: 'Password',
+                  contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(32.0)),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(4),
+              child: Material(
+                shadowColor: Colors.lightBlueAccent.shade100,
+                child: ElevatedButton(
+                  onPressed: _submit,
+                  child: Text('Log In', style: TextStyle(color: Colors.white)),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   void onLoginError(String error) {
@@ -58,7 +123,7 @@ class _LoginPageState extends State<LoginPage> implements LoginCallBack {
     if (login != null) {
       Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
     } else {
-      _showSnackBar("Login Gagal");
+      _showSnackBar("Username anda salah");
       setState(() {
         _isLoading = false;
       });

@@ -75,7 +75,7 @@ class DbHelper {
 //create databases login
   Future<int> insertLogin(Login login) async {
     Database db = await this.initDb();
-    int count = await db.insert('login', login.toMap());
+    int count = await db.insert('login', login.toMapLogin());
     return count;
   }
 
@@ -90,8 +90,8 @@ class DbHelper {
 //update databases login
   Future<int> updateLogin(Login login) async {
     Database db = await this.initDb();
-    int count = await db
-        .update('login', login.toMap(), where: 'id=?', whereArgs: [login.id]);
+    int count = await db.update('login', login.toMapLogin(),
+        where: 'id=?', whereArgs: [login.id]);
     return count;
   }
 

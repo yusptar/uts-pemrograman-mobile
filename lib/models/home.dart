@@ -3,7 +3,8 @@ import 'package:sqflite/sqflite.dart';
 import 'dart:async';
 import 'package:uts/dbhelper/dbhelper.dart';
 import 'entryform.dart';
-import 'datarawatjalan.dart'; //pendukung program asinkron
+import 'datarawatjalan.dart';
+import 'login.dart'; //pendukung program asinkron
 
 class Home extends StatefulWidget {
   @override
@@ -21,32 +22,37 @@ class HomeState extends State<Home> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Data Pasien Rawat Jalan'),
+        title: Text(
+          'Data Pasien Rawat Jalan',
+          style: TextStyle(color: Colors.black),
+        ),
       ),
-      body: Column(children: [
-        Expanded(
-          child: createListView(),
-        ),
-        Container(
-          alignment: Alignment.bottomCenter,
-          child: SizedBox(
-            width: double.infinity,
-            child: FloatingActionButton(
-                onPressed: () async {
-                  var rawatjalan = await navigateToEntryForm(context, null);
-                  if (rawatjalan != null) {
-                    // Fungsi untuk Insert ke DB
-                    int result = await dbHelper.insert(rawatjalan);
-                    if (result > 0) {
-                      updateListView();
-                    }
-                  }
-                },
-                child: const Icon(Icons.add),
-                backgroundColor: Colors.lightGreen),
+      body: Column(
+        children: [
+          Expanded(
+            child: createListView(),
           ),
-        ),
-      ]),
+          Container(
+            alignment: Alignment.bottomCenter,
+            child: SizedBox(
+              width: double.infinity,
+              child: FloatingActionButton(
+                  onPressed: () async {
+                    var rawatjalan = await navigateToEntryForm(context, null);
+                    if (rawatjalan != null) {
+                      // Fungsi untuk Insert ke DB
+                      int result = await dbHelper.insert(rawatjalan);
+                      if (result > 0) {
+                        updateListView();
+                      }
+                    }
+                  },
+                  child: const Icon(Icons.add),
+                  backgroundColor: Colors.blueGrey),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -69,8 +75,8 @@ class HomeState extends State<Home> {
           elevation: 2.0,
           child: ListTile(
             leading: CircleAvatar(
-              backgroundColor: Colors.red,
-              child: Icon(Icons.ad_units),
+              backgroundColor: Colors.white,
+              child: Icon(Icons.data_usage),
             ),
             title: Text(
               this.dataList[index].nama,

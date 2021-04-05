@@ -1,6 +1,7 @@
 //kode utama Aplikasi tampilan awal
 import 'package:flutter/material.dart';
-import 'package:uts/models/home.dart'; //package letak folder
+import 'package:uts/models/home.dart';
+import 'package:uts/models/loginpage.dart'; //package letak folder
 
 void main() => runApp(MyApp());
 
@@ -11,9 +12,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'RS Polinema',
       theme: ThemeData(
-        primarySwatch: Colors.lightGreen,
+        primarySwatch: Colors.blueGrey,
       ),
-      home: Home(),
+      home: LoginPage(),
     );
   }
 }
