@@ -3,8 +3,9 @@ import 'package:sqflite/sqflite.dart';
 import 'dart:async';
 import 'package:uts/dbhelper/dbhelper.dart';
 import 'entryform.dart';
-import 'datarawatjalan.dart';
-import 'login.dart'; //pendukung program asinkron
+import '../models/datarawatjalan.dart';
+import '../models/login.dart';
+import 'registerpage.dart'; //pendukung program asinkron
 
 class Home extends StatefulWidget {
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'datarawatjalan.dart';
+import '../models/datarawatjalan.dart';
 
 class EntryForm extends StatefulWidget {
   final RawatJalan data;

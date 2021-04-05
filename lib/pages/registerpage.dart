@@ -20,8 +20,8 @@ class RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register Page"),
-        backgroundColor: Colors.white,
+        title: Text("Register Page", style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.black,
       ),
       body: Center(
         child: ListView(
@@ -29,6 +29,7 @@ class RegisterPageState extends State<RegisterPage> {
           padding: EdgeInsets.only(left: 24.0, right: 24.0),
           children: <Widget>[
             Container(
+              margin: EdgeInsets.all(5),
               child: TextFormField(
                 keyboardType: TextInputType.text,
                 autofocus: false,
@@ -42,6 +43,7 @@ class RegisterPageState extends State<RegisterPage> {
               ),
             ),
             Container(
+              margin: EdgeInsets.all(5),
               child: TextFormField(
                 autofocus: false,
                 controller: passwordController,
@@ -55,10 +57,11 @@ class RegisterPageState extends State<RegisterPage> {
               ),
             ),
             Container(
+              margin: EdgeInsets.all(5),
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
+                padding: EdgeInsets.all(4),
                 child: Material(
-                  shadowColor: Colors.lightBlueAccent.shade100,
+                  shadowColor: Colors.black54,
                   child: ElevatedButton(
                     onPressed: () {
                       if (login == null) {

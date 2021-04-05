@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:uts/dbhelper/dbhelper.dart';
-import 'package:uts/models/home.dart';
+import 'package:uts/pages/home.dart';
 import 'package:uts/models/login.dart';
 import 'package:uts/models/loginResp.dart';
 import 'package:uts/main.dart';
-import 'package:uts/models/register.dart';
+import 'package:uts/pages/registerpage.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -98,12 +98,12 @@ class _LoginPageState extends State<LoginPage> implements LoginCallBack {
             Padding(
               padding: EdgeInsets.all(4),
               child: Material(
-                shadowColor: Colors.lightBlueAccent.shade100,
-                child: RaisedButton(
+                shadowColor: Colors.black87,
+                child: ElevatedButton(
                   onPressed: _submit,
                   child: Text(
                     'Log In',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
               ),
